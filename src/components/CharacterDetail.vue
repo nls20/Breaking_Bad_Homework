@@ -1,14 +1,23 @@
 <template>
-  <div id="selected_character">
-      <h2>{{selectedCharacter.name}}</h2>
-      <img class="img" :src="selectedCharacter.img" />
+  <div v-if='character'>
+      <h2>{{character.name}}</h2>
+          <div>
+          <p><span>Nickname</span>: {{character.nickname}}</p>
+          <p><span>Birthday</span>: {{character.birthday}}</p>
+          <p><span>Occupation</span>: {{character.occupation}}</p>
+        </div>
+        <div>
+          <img :src="character.img" :alt="character.name">
+        </div>
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main.js';
+
 export default {
-    name: "character-detail",
-    props: ["selectedCharacter"]
+    name: 'character-detail',
+    props: ['character']
 }
 </script>
 

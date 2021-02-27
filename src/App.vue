@@ -1,16 +1,10 @@
 <template>
-  <div id="app">
-    <label for="character_select">Select a Character:</label>
-    <select id="character_select" v-model="selectedCharacter">
-      <option disabled value="">Select a Character</option>
-      <option v-for="character in characters" :key="character" :value="character">{{character.name}}</option>
-    </select>
-
-    <character-detail v-if="selectedCharacter" :selectedCharacter="selectedCharacter"></character-detail>
-
-    <button v-if="!favouriteCharacters.includes(selectedCharacter)" v-on:click="addToFavourites">Add Character</button>
-
-    <favourite-characters :favouriteCharacters="favouriteCharacters"></favourite-characters>
+  <div>
+    <h1>Characters</h1>
+    <div>
+      <characters-list :characters='characters'></characters-list>
+      <character-detail :character="selectedCharacter"></character-detail>
+    </div>
   </div>
 
 
@@ -19,34 +13,30 @@
 <script>
 
 import CharacterDetail from './components/CharacterDetail.vue';
-import FavouriteListItem from './components/FavouriteListItem.vue';
+import CharactersList from './components/CharactersList.vue';
+import { eventBus } from './main.js';
 
 export default {
-  name: 'App',
+  name: 'app',
   data() {
     return {
       characters: [],
-      selectedCharacter: null,
-      favouriteCharacters: []
-    }
+      selectedCharacter: null
+    };
   },
   components: {
     'character-detail': CharacterDetail,
-    'favourite-characters': FavouriteListItem
+    'characters-list': CharactersList
   },
   mounted() {
-    this.getCharacters()
+    fetch("https://breakingbadapi.com/api/characters")
+    .then(res => res.json())
+    .then(characters => this.characters = characters)
+
+    eventBus.$on('character-selected', (character) => {
+    this.selectedCharacter = character
+      })
   },
-  methods: {
-    getCharacters: function () {
-      fetch("https://breakingbadapi.com/api/characters")
-      .then(res => res.json())
-      .then(characters => this.characters = characters)
-    },
-    addToFavourites: function() {
-      this.favouriteCharacters.push(this.selectedCharacter)
-    }
-  }
 }
 </script>
 
