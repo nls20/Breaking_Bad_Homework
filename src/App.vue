@@ -1,28 +1,55 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <label for="character_select">Select a Character:</label>
+    <select id="character_select" v-model="selectedCharacter">
+      <option disabled value="">Select a Character</option>
+      <option v-for="character in characters" :key="character" :value="character">{{character.name}}</option>
+    </select>
+
+    <character-detail v-if="selectedCharacter" :selectedCharacter="selectedCharacter"></character-detail>
+
+    <button v-if="!favouriteCharacters.includes(selectedCharacter)" v-on:click="addToFavourites">Add Character</button>
+
+    <favourite-characters :favouriteCharacters="favouriteCharacters"></favourite-characters>
   </div>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import CharacterDetail from './components/CharacterDetail.vue';
+import FavouriteListItem from './components/FavouriteListItem.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      characters: [],
+      selectedCharacter: null,
+      favouriteCharacters: []
+    }
+  },
   components: {
-    HelloWorld
+    'character-detail': CharacterDetail,
+    'favourite-characters': FavouriteListItem
+  },
+  mounted() {
+    this.getCharacters()
+  },
+  methods: {
+    getCharacters: function () {
+      fetch("https://breakingbadapi.com/api/characters")
+      .then(res => res.json())
+      .then(characters => this.characters = characters)
+    },
+    addToFavourites: function() {
+      this.favouriteCharacters.push(this.selectedCharacter)
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
