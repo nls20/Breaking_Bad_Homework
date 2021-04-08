@@ -26,11 +26,13 @@ export default {
 #character-info-container {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 400px;
+    width: 300px;
+    height: 500px;
     padding: 20px;
     border-radius: 25px;
     border: 2px solid dodgerblue;
-    background-color: lightseagreen;
+    background-color: aquamarine;
+    margin-left: 20px;
+    align-items: center;;
     }
 </style>

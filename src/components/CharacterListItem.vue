@@ -29,7 +29,8 @@ export default {
 <style>
 
 p {
-  font-size: 20px;
+  font-size: 25px;
+  color: black;
 }
 
 .characterlistitem {
@@ -45,7 +46,7 @@ p {
 }
 
 button {
-    padding: 15px;
+    padding: 10px;
     font-size: 20px;
     text-decoration: none;
     background-color: aquamarine;

@@ -21,7 +21,7 @@ export default {
 
 <style>
 .character-list-item {
-    width: 45%;
+    width: 60%;
     height: 550px;
     overflow-y: scroll;
     display: flex;

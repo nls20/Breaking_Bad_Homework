@@ -76,14 +76,18 @@ export default {
 h1 {
   color: white;
   text-align: center;
-  font-size: 40px;
+  font-size: 80px;
+  text-shadow: 1px 1px black;
 }
+
 #app {
   background-image: url('https://f3e6t7k9.stackpathcdn.com/wp-content/uploads/2015/05/Breaking-Bad-RV.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  height: 100%;
+  width: 100%;
 }
 
 #list-info {

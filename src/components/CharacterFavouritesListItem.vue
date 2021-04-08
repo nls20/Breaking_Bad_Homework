@@ -27,7 +27,8 @@ export default {
         width: 150px;
         height: 150px;
         border-radius: 25px;
-        border: 2px solid dodgerblue;
+        border: 6px solid dodgerblue;
         background-color: white;
+        margin-left: 20px;
 }
 </style>

@@ -12,9 +12,10 @@ export default {
 <style scoped>
 h2 {
   font-size: 40px;
-  color: white;
+  color: black;
   padding: 5px;
   text-align: center;
   border-style: solid;
+  text-shadow: black 5px;
 }
 </style>
