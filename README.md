@@ -1,29 +1,3 @@
-# breaking_bad_homework
+Created a Breaking Bad themed app that makes a request to an API and displays the data.  The app allows you to scroll through a list of Breaking Bad characters and either click for 'More Info', which displays it's Character Status, or yuou can add it to a 'Favourite Characters' list.
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![breakingbad](https://user-images.githubusercontent.com/75388411/114049183-2727f580-9883-11eb-9e2d-8fc72b1aa49d.png)
